@@ -1,0 +1,522 @@
+@charset "UTF-8";
+.navigation {
+    height: 70px;
+    background: transparent;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+/* Quitamos el relleno y el margen del documento */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI';
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+
+::-webkit-scrollbar{
+    background-color: #e7e7e7;
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #08122e;
+}
+
+
+/* Codificamos nuestra barra de navegación */
+.brand {
+    position: absolute;
+    padding-left: 20px;
+    float: left;
+    line-height: 70px;
+    text-transform: uppercase;
+    font-size: 1.4em;
+}
+.brand a,
+.brand a:visited {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Configuramos el tamaño de la imagen dentro de la Barra */
+.brand a img{
+    height: 55px;
+    margin-top: 7px;
+    aspect-ratio: 3/2;
+}
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+nav {
+    float: right;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    float: left;
+    position: relative;
+}
+nav ul li a,
+nav ul li a:visited {
+    display: block;
+    padding: 0 20px;
+    line-height: 70px;
+    background: transparent;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Aplicamos un efecto background a los elementos principales de la barra */
+nav ul li a:hover,
+nav ul li a:visited:hover {
+    background: transparent;
+    color: #f2cb05;
+    font-weight: 700;
+}
+
+
+/* Aplicamos otro color de background a un elemento en especifico */
+nav ul li .redes:hover,
+nav ul li .redes:visited:hover {
+    background: transparent;
+    color: #f2cb05;
+}
+
+/* Aplicamos otro color de background a un elemento en especifico */
+nav ul li .priv:hover,
+nav ul li .priv:visited:hover {
+    background: transparent;
+    color: #f2cb05;
+}
+
+nav ul li a:not(:only-child):after,
+nav ul li a:visited:not(:only-child):after {
+    padding-left: 4px;
+    content: " ▾";
+}
+nav ul li ul li {
+    min-width: 220px;
+}
+nav ul li ul li a {
+    padding: 15px;
+    line-height: 20px;
+}
+
+.nav-dropdown {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Navgeación móvil */
+.nav-mobile {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #ffffff;
+    height: 70px;
+    width: 70px;
+}
+
+@media only screen and (max-width: 798px) {
+
+    .nav-mobile {
+        display: block;
+    }
+    nav {
+        width: 100%;
+        padding: 70px 0 15px;
+    }
+    nav ul {
+        display: none;
+    }
+    nav ul li {
+        float: none;
+    }
+    nav ul li a {
+        padding: 15px;
+        line-height: 20px;
+    }
+    nav ul li ul li a {
+        padding-left: 30px;
+    }
+    .nav-dropdown {
+        position: static;
+    }
+
+    .brand a img{
+        height: 45px;
+        margin-top: 12px;
+    }
+}
+
+
+@media screen and (min-width: 799px) {
+    
+    .nav-list {
+    display: block !important;
+    }
+}
+
+
+#nav-toggle {
+    position: absolute;
+    left: 18px;
+    top: 22px;
+    cursor: pointer;
+    padding: 10px 35px 16px 0px;
+}
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: #000000;
+    position: absolute;
+    display: block;
+    content: "";
+    transition: all 300ms ease-in-out;
+}
+#nav-toggle span:before {
+    top: -10px;
+}
+#nav-toggle span:after {
+    bottom: -10px;
+}
+#nav-toggle.active span {
+    background-color: transparent;
+}
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+    top: 0;
+}
+#nav-toggle.active span:before {
+    transform: rotate(45deg);
+}
+#nav-toggle.active span:after {
+    transform: rotate(-45deg);
+}
+
+article {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+
+#contenedor_carga{
+    z-index: 100;
+    background: #000000;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+#carga{
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -webkit-animation: girar 2.2s linear infinite;
+    -o-animation: girar 2.2s linear infinite;
+    animation: girar 2.2s linear infinite;
+}
+
+#carga::before,
+#carga::after{
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+}
+
+
+#carga::before{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: linear-gradient(0deg, #f24495 0%, #f2bc57 100%);
+}
+
+#carga::after{
+    width: 85%;
+    height: 85%;
+    background: #000000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes girar{
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+/* Configuración para desktop */
+@media screen and (min-width: 1024px){
+    .banner{
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        background-color: #28183f;
+        position: relative;
+    }
+    
+    #hero {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        background-image: linear-gradient(
+        0deg,
+        rgba(15, 15, 15, 0),
+        rgba(0, 0, 0, 0)
+        )
+        ,url("../img/daf-gaming_back.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    
+    .titulo-banner{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        margin-left: 50px;
+    }
+    
+    .titulo-banner h1{
+        font-size: 40px;
+        color: #fff;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .titulo-banner span{
+        font-size: 20px;
+        color: #fff;
+        text-transform: uppercase;
+        margin-top: 5px;
+        font-weight: 700;
+    }
+
+    /* Estilos para el desplazamiento de la imagen desde la derecha hasta llegar a su punto de origen */
+    .slide-in-right{
+        -webkit-animation: slide-in-right 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: slide-in-right 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    /* Estilos para los diferentes navegadores */
+    @-webkit-keyframes slide-in-right {
+        0% {
+        -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
+        opacity: 0;
+        }
+
+        100% {
+        -webkit-transform: translateY(0);
+            transform: translateY(0);
+        opacity: 1;
+        }
+    }
+
+    @keyframes slide-in-right {
+        0% {
+        -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
+        opacity: 0;
+        }
+
+        100% {
+        -webkit-transform: translateY(0);
+            transform: translateY(0);
+        opacity: 1;
+        }
+    }
+
+
+    /* Animaciones para titulo de banner */
+    .slide-in-left {
+        -webkit-animation: slide-in-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                animation: slide-in-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    @-webkit-keyframes slide-in-left {
+        0% {
+            -webkit-transform: translateX(-1000px);
+                    transform: translateX(-1000px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slide-in-left {
+        0% {
+            -webkit-transform: translateX(-1000px);
+                    transform: translateX(-1000px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .slide_animate{
+        opacity: 0;
+        transition: all 1s;
+    }
+    /* La variable se encuentra almacenda en el animate.js */
+    .slide-top{
+        animation: slide-top 1s;
+    }
+
+    @keyframes slide-top {
+        0% {
+            transform: translateY(120px);
+        }
+
+        100%{
+            transform: translateY(0);
+        }
+    }
+
+    /* Estilos para el button con ubicación en banner */
+    .titulo-banner a{
+        text-decoration: none;
+    }
+
+    .button-a{
+        margin-top: 30px;
+    }
+
+    .titulo-banner .nav-link {
+        padding: 15px 30px;
+        border: unset;
+        border: 1px solid #ffffff;
+        border-radius: 2px;
+        z-index: 1;
+        color: #fff;
+        background: transparent;
+        position: relative;
+        transition: all 250ms;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .titulo-banner .nav-link{
+        text-align: center;
+        font-size: 13px;
+        font-weight: 600;
+        font-style: normal;
+        text-transform: uppercase;
+    }
+
+    .titulo-banner .nav-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        height: 100%;
+        width: 0;
+        border-radius: 2px;
+        background-color: #f2bc57;
+        transition: all 250ms
+    }
+
+    .titulo-banner .nav-link:hover {
+        color: #020202;
+        border: 1px solid #f2bc57;
+    }
+
+    .titulo-banner .nav-link:hover::before {
+        width: 100%;
+    }
+
+
+    /* Estilos para bread */
+    .breadcrubms-container{
+        display: flex;
+        background-color: #f24495;
+        width: 100%;
+    }
+
+    .breadcrubms-container .bread{
+        display: flex;
+        width: 700px;
+        margin-left: 60px;
+        gap: 20px;
+    }
+
+    .fa-chevron-right{
+        color: #0549dd;
+        margin-right: 5px;
+    }
+
+    .nav-link{
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 12px;
+        transition: all 300ms;
+    }
+
+    .nav-link:hover{
+        color: #000000;
+    }
+
+    /* Estilos para el footer*/
+    .footer-ext{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #111b44;
+        height: 40px;
+    }
+
+    .footer-ext p{
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #fff;
+        text-transform: uppercase;
+    }
+}    
